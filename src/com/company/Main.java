@@ -13,7 +13,7 @@ public class Main {
 
         try {
             // Connect to the server
-            ServerSocket server = new ServerSocket(10001);
+            ServerSocket server = new ServerSocket(10002);
 
             while (true) {
 
