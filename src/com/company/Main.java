@@ -24,6 +24,8 @@ public class Main {
                 // Create input and output streams to read from and write to the server
                 PrintStream out = new PrintStream(socket.getOutputStream());
                 byte[] bytes = socket.getInputStream().readAllBytes();
+                System.out.println("Byte Data: ");
+                System.out.println(bytes);
 //                InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
 //                BufferedReader in = new BufferedReader(inputStreamReader);
 
@@ -33,6 +35,7 @@ public class Main {
 //                    System.out.println(line);
 //                    line = in.readLine();
 //                }
+            System.out.println("Hex Data: ");
             System.out.println(bytesToHex(bytes));
             // Close our streams
 //            in.close();
