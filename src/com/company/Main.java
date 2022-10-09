@@ -13,15 +13,18 @@ public class Main {
         while (true) {
             Socket socket = server.accept();
             System.out.println("Client Connected");
-            StringBuilder hexData = new StringBuilder();
+            StringBuilder hexDataBuilder = new StringBuilder();
+            StringBuilder byteDataBuilder = new StringBuilder();
             while (true) {
                 int byteData = socket.getInputStream().read();
-                hexData.append(Integer.toHexString(byteData));
+                byteDataBuilder.append(byteData);
+                hexDataBuilder.append(Integer.toHexString(byteData));
                 if ((char) byteData == '\n' || (char) byteData == '\r')
                     break;
             }
             socket.getOutputStream().write(0x00b);
-            System.out.println(hexData);
+            System.out.println("Hex Data: " + hexDataBuilder);
+            System.out.println("Byte Data: " + byteDataBuilder);
             socket.close();
         }
     }
