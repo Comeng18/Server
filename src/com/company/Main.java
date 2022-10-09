@@ -15,9 +15,7 @@ public class Main {
 
         while (true) {
             Socket socket = server.accept();
-
             System.out.println("Client Connected");
-
             StringBuilder hexData = new StringBuilder();
             while (true) {
                 int byteData = socket.getInputStream().read();
@@ -25,7 +23,9 @@ public class Main {
                 if ((char) byteData == '\n' || (char) byteData == '\r')
                     break;
             }
+            socket.getOutputStream().write(0x01b);
             System.out.println(hexData);
+            socket.close();
         }
     }
 }
