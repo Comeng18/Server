@@ -1,31 +1,31 @@
 package com.company;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        // Connect to the server
-        ServerSocket server = new ServerSocket(10001);
+    public static void main(String[] args) {
+        StringBuilder hexDataBuilder = new StringBuilder();
+        try {
+            // Connect to the server
+            ServerSocket server = new ServerSocket(10001);
 
-        while (true) {
-            Socket socket = server.accept();
-            System.out.println("Client Connected");
-            StringBuilder hexDataBuilder = new StringBuilder();
-            StringBuilder byteDataBuilder = new StringBuilder();
             while (true) {
-                int byteData = socket.getInputStream().read();
-                byteDataBuilder.append(byteData);
-                hexDataBuilder.append(Integer.toHexString(byteData));
-                if ((char) byteData == '\n' || (char) byteData == '\r')
-                    break;
+                Socket socket = server.accept();
+                System.out.println("Client Connected");
+                hexDataBuilder = new StringBuilder();
+                byte[] bytes = socket.getInputStream().readAllBytes();
+                for (byte aByte : bytes)
+                    hexDataBuilder.append(String.format("%02X", aByte));
+
+//                socket.getOutputStream().write(0x01);
+                System.out.println("Hex Data: " + hexDataBuilder);
+                socket.close();
             }
-            socket.getOutputStream().write(0x00b);
+        } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Hex Data: " + hexDataBuilder);
-            System.out.println("Byte Data: " + byteDataBuilder);
-            socket.close();
         }
     }
 }
