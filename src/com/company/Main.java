@@ -24,10 +24,10 @@ public class Main {
                 if (byteData < 0 || (char) byteData == '\n' || (char) byteData == '\r')
                     break;
             }
-//            socket.getOutputStream().write(0x00b);
-//            System.out.println("Hex Data: " + hexDataBuilder);
-//            System.out.println("Byte Data: " + byteDataBuilder);
-//            socket.close();
+            socket.getOutputStream().write(0x00b);
+            System.out.println("Hex Data: " + hexDataBuilder);
+            System.out.println("Byte Data: " + byteDataBuilder);
+            socket.close();
         }
     }
 }
