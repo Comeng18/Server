@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         // Connect to the server
-        ServerSocket server = new ServerSocket(10001);
+        ServerSocket server = new ServerSocket(10002);
 
         while (true) {
             Socket socket = server.accept();
