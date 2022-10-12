@@ -13,6 +13,7 @@ public class Main {
         while (true) {
             Socket socket = server.accept();
             System.out.println("Client Connected");
+            socket.getOutputStream().write(0x01b);
             StringBuilder hexDataBuilder = new StringBuilder();
             StringBuilder byteDataBuilder = new StringBuilder();
             while (true) {
