@@ -19,10 +19,10 @@ public class Main {
             while (true) {
                 int byteData = socket.getInputStream().read();
                 System.out.println(byteData + " " + String.format("%02X", byteData));
-//                byteDataBuilder.append(byteData);
-//                hexDataBuilder.append(String.format("%02X", byteData));
-//                if ((char) byteData == '\n' || (char) byteData == '\r')
-//                    break;
+                byteDataBuilder.append(byteData);
+                hexDataBuilder.append(String.format("%02X", byteData));
+                if (byteData < 0 || (char) byteData == '\n' || (char) byteData == '\r')
+                    break;
             }
 //            socket.getOutputStream().write(0x00b);
 //            System.out.println("Hex Data: " + hexDataBuilder);
