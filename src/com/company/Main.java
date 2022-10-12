@@ -17,15 +17,16 @@ public class Main {
             StringBuilder byteDataBuilder = new StringBuilder();
             while (true) {
                 int byteData = socket.getInputStream().read();
-                byteDataBuilder.append(byteData);
-                hexDataBuilder.append(Integer.toHexString(byteData));
-                if ((char) byteData == '\n' || (char) byteData == '\r')
-                    break;
+                System.out.println(byteData + " " + String.format("%02X", byteData));
+//                byteDataBuilder.append(byteData);
+//                hexDataBuilder.append(String.format("%02X", byteData));
+//                if ((char) byteData == '\n' || (char) byteData == '\r')
+//                    break;
             }
-            socket.getOutputStream().write(0x00b);
-            System.out.println("Hex Data: " + hexDataBuilder);
-            System.out.println("Byte Data: " + byteDataBuilder);
-            socket.close();
+//            socket.getOutputStream().write(0x00b);
+//            System.out.println("Hex Data: " + hexDataBuilder);
+//            System.out.println("Byte Data: " + byteDataBuilder);
+//            socket.close();
         }
     }
 }
